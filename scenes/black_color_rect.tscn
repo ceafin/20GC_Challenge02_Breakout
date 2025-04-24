@@ -1,6 +1,14 @@
-[gd_scene format=3 uid="uid://du871lok2v31i"]
+[gd_scene load_steps=2 format=3 uid="uid://du871lok2v31i"]
+
+[ext_resource type="Texture2D" uid="uid://c43cadbjsbw5b" path="res://assets/full_res_grid.png" id="1_bbqrt"]
 
 [node name="BlackColorRect" type="ColorRect"]
 offset_right = 224.0
 offset_bottom = 288.0
 color = Color(0.313726, 0, 0.752941, 1)
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_bbqrt")
