@@ -1,0 +1,59 @@
+[gd_scene load_steps=9 format=3 uid="uid://ho6uawad1gbb"]
+
+[ext_resource type="Texture2D" uid="uid://c43cadbjsbw5b" path="res://assets/full_res_grid.png" id="1_a76vg"]
+[ext_resource type="PackedScene" uid="uid://cb3w2qa3f1m8h" path="res://scenes/ball.tscn" id="2_bj7ch"]
+[ext_resource type="PackedScene" uid="uid://bh750ny18bgcm" path="res://scenes/vaus.tscn" id="3_yf3h8"]
+[ext_resource type="PackedScene" uid="uid://ou4v5utuptek" path="res://scenes/powerups/power_up.tscn" id="4_7771l"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_bj7ch"]
+normal = Vector2(0, 1)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yf3h8"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_a76vg"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_7771l"]
+
+[node name="Sandbox Field" type="Node2D"]
+
+[node name="FullResGrid" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.501961)
+texture = ExtResource("1_a76vg")
+centered = false
+
+[node name="Walls" type="Node" parent="."]
+
+[node name="Top Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(112, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Top Wall"]
+shape = SubResource("WorldBoundaryShape2D_bj7ch")
+
+[node name="Left Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(0, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Left Wall"]
+shape = SubResource("WorldBoundaryShape2D_yf3h8")
+
+[node name="Right Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(224, 144)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Right Wall"]
+shape = SubResource("WorldBoundaryShape2D_a76vg")
+
+[node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
+position = Vector2(112, 288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
+shape = SubResource("WorldBoundaryShape2D_7771l")
+
+[node name="Ball" parent="." instance=ExtResource("2_bj7ch")]
+position = Vector2(112, 144)
+
+[node name="Vaus" parent="." instance=ExtResource("3_yf3h8")]
+position = Vector2(112, 240)
+
+[node name="Power Up" parent="." instance=ExtResource("4_7771l")]
+position = Vector2(80, 81)
