@@ -1,5 +1,5 @@
 class_name Vaus
-extends Area2D
+extends StaticBody2D
 
 @export var speed : float = 100.0
 @export var max_speed : float = 200.0
@@ -13,13 +13,6 @@ var velocity: Vector2 = Vector2.ZERO
 func _process(delta: float) -> void:
 	state_label.text = vaus_state_machine.current_state.name
 
-func _physics_process(delta: float) -> void:
-	print(velocity)
 
 func on_powerup_collected(state_name: String) -> void:
 	vaus_state_machine.request_state( state_name )
-
-
-func _on_body_entered(body: Node2D) -> void:
-	if body is Ball:
-		body.bounce_off_paddle(global_position)

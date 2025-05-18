@@ -6,7 +6,7 @@ func enter() -> void:
 	if not vaus.animated_sprite_2d.animation_finished.is_connected(_on_enterlazer_animation_finished):
 		vaus.animated_sprite_2d.animation_finished.connect(_on_enterlazer_animation_finished)
 	vaus.velocity = Vector2.ZERO
-	vaus.animated_sprite_2d.play( "tranform_fire" )
+	vaus.animated_sprite_2d.play( "transform_fire" )
 
 func physics_update(_delta: float) -> void:
 	var input_direction := Input.get_axis( "move_left", "move_right" )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ou4v5utuptek"]
+[gd_scene load_steps=69 format=3 uid="uid://ou4v5utuptek"]
 
 [ext_resource type="Script" uid="uid://b5nx67qr7q5or" path="res://scripts/pus/power_up.gd" id="1_01xxy"]
 [ext_resource type="Texture2D" uid="uid://corpwbu60e1y2" path="res://assets/power_ups.png" id="2_3864p"]
@@ -162,6 +162,38 @@ region = Rect2(96, 16, 16, 8)
 [sub_resource type="AtlasTexture" id="AtlasTexture_yefcv"]
 atlas = ExtResource("2_3864p")
 region = Rect2(112, 16, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_01xxy"]
+atlas = ExtResource("2_3864p")
+region = Rect2(0, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3864p"]
+atlas = ExtResource("2_3864p")
+region = Rect2(16, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sei4p"]
+atlas = ExtResource("2_3864p")
+region = Rect2(32, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxttf"]
+atlas = ExtResource("2_3864p")
+region = Rect2(48, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_774va"]
+atlas = ExtResource("2_3864p")
+region = Rect2(64, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ewveo"]
+atlas = ExtResource("2_3864p")
+region = Rect2(80, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpa61"]
+atlas = ExtResource("2_3864p")
+region = Rect2(96, 56, 16, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1l83h"]
+atlas = ExtResource("2_3864p")
+region = Rect2(112, 56, 16, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pfjjh"]
 atlas = ExtResource("2_3864p")
@@ -376,6 +408,35 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_01xxy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3864p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sei4p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dxttf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_774va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ewveo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpa61")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1l83h")
+}],
+"loop": true,
+"name": &"multiball",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_pfjjh")
 }, {
 "duration": 1.0,
@@ -443,7 +504,8 @@ speed = 40.0
 
 [node name="Animated Sprites" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_g8s7x")
-animation = &"player"
+animation = &"multiball"
+frame_progress = 0.437841
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = -1.5708
@@ -453,4 +515,5 @@ shape = SubResource("CapsuleShape2D_psnyi")
 rect = Rect2(-8, -4, 16, 8)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

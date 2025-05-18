@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Arkoball: Ricochet Alley DX ShatterDeluxe"
+run/main_scene="uid://ho6uawad1gbb"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GSB="*res://scripts/global_signal_bus.gd"
 
 [display]
 

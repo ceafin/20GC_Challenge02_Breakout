@@ -1,19 +1,22 @@
 class_name PowerUp
 extends Area2D
 
-enum Powers {
-	POWER_BREAKOUT,
-	POWER_CATCH,
-	POWER_DISRUPTION,
-	POWER_ENLARGE,
-	POWER_LAZER,
-	POWER_PLAYER,
-	POWER_SLOW
-}
+signal spawn_more_balls
 
-@export var power : Powers
+const POWERUP_TABLE = [
+	{ name = "breakout", weight = 1 },
+	{ name = "catch", weight = 5 },
+	{ name = "disruption", weight = 1 },
+	{ name = "enlarge", weight = 5 },
+	{ name = "lazer", weight = 5 },
+	{ name = "player", weight = 1 },
+	{ name = "multiball", weight = 20 },
+	{ name = "slow", weight = 1 },
+]
+
 @export var speed : float = 70
 
+var power_name : String
 var velocity := Vector2(0,1).normalized()
 
 @onready var animated_sprites: AnimatedSprite2D = $"Animated Sprites"
@@ -22,26 +25,25 @@ var velocity := Vector2(0,1).normalized()
 
 func _ready() -> void:
 	
-	if !power:
-		power = Powers.values().pick_random()
+	power_name = roll_powerup()
 	
-	match power:
-		Powers.POWER_BREAKOUT:
+	match power_name:
+		"breakout":
 			animated_sprites.play("breakout")
-		Powers.POWER_CATCH:
+		"catch":
 			animated_sprites.play("catch")
-		Powers.POWER_DISRUPTION:
+		"disruption":
 			animated_sprites.play("disruption")
-		Powers.POWER_ENLARGE:
+		"enlarge":
 			animated_sprites.play("enlarge")
-		Powers.POWER_LAZER:
+		"lazer":
 			animated_sprites.play("lazer")
-		Powers.POWER_PLAYER:
+		"player":
 			animated_sprites.play("player")
-		Powers.POWER_BREAKOUT:
-			animated_sprites.play("breakout")
-		Powers.POWER_SLOW:
+		"slow":
 			animated_sprites.play("slow")
+		"multiball":
+			animated_sprites.play("multiball")
 
 
 func _physics_process(delta: float) -> void:
@@ -52,7 +54,41 @@ func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	self.queue_free()
 
 
-func _on_area_entered(area: Area2D) -> void:
-	if area is Vaus:
-		area.on_powerup_collected("EnterLazer")
-		queue_free()  # optional: remove the power-up
+func _on_body_entered(body: Node2D) -> void:
+	if body is Vaus:
+		match power_name:
+			"breakout":
+				animated_sprites.play("breakout")
+			"catch":
+				body.on_powerup_collected("EnterCatch")
+			"disruption":
+				animated_sprites.play("disruption")
+			"enlarge":
+				animated_sprites.play("enlarge")
+			"lazer":
+				body.on_powerup_collected("EnterLazer")
+			"player":
+				animated_sprites.play("player")
+			"multiball":
+				GSB.release_the_balls.emit()
+			"slow":
+				animated_sprites.play("slow")
+		
+		queue_free()
+
+
+func roll_powerup() -> String:
+	var total_weight = 0
+	for entry in POWERUP_TABLE:
+		total_weight += entry.weight
+	
+	var roll = randi() % total_weight
+	var cumulative = 0
+	
+	for entry in POWERUP_TABLE:
+		cumulative += entry.weight
+		if roll < cumulative:
+			return entry.name
+	
+	return "nothing"
+	
