@@ -51,13 +51,6 @@ func _ready() -> void:
 func take_damage() -> void:
 	hit_points -= 1
 	if hit_points <= 0:
-		spawn_powerup()
+		GSB.powerup_spawn_requested.emit( position )
 		queue_free()
-
-func spawn_powerup() -> void:
-	if randi_range(15,20) == 20:
-		var power_up = POWER_UP.instantiate()
-		power_up.global_position = global_position
-		var power_ups_node = get_tree().current_scene.find_child("PowerUps", true)
-		power_ups_node.add_child( power_up )
 	

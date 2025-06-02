@@ -70,7 +70,7 @@ func _on_body_entered(body: Node2D) -> void:
 			"player":
 				animated_sprites.play("player")
 			"multiball":
-				GSB.release_the_balls.emit()
+				GSB.multi_ball_requested.emit()
 			"slow":
 				animated_sprites.play("slow")
 		

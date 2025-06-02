@@ -1,4 +1,6 @@
 class_name GlobalSignalBus
 extends Node
 
-signal release_the_balls()
+signal multi_ball_requested()
+signal powerup_spawn_requested( Vector2 )
+signal balls_counted( int )

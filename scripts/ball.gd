@@ -1,19 +1,19 @@
 class_name Ball
 extends CharacterBody2D
 
-const BALL = preload("res://scenes/ball.tscn")
-
-@export var speed : float = 200.0
+@export var speed : float = 150.0
 
 var is_stuck := false
 var stuck_to_paddle : Vaus = null
 var offset_from_paddle : Vector2
 var release_vector : Vector2
+var ball_count : int = 0
+var balls_node : Node2D
 
 func _ready() -> void:
 	add_to_group("balls")
-	GSB.release_the_balls.connect( _release_the_balls )
 	velocity = Vector2( randf_range(-1,1), randf_range(-1,1) ).normalized()
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -60,24 +60,10 @@ func stick_to(vaus: Vaus) -> void:
 func release_from_paddle() -> void:
 	is_stuck = false
 	stuck_to_paddle = null
-	#velocity = Vector2(0, -1).normalized()
 	velocity = release_vector
-
-func _release_the_balls() -> void:
-	if count_balls() == 1:
-		for iteration in range(3):
-			var ball = BALL.instantiate()
-			ball.global_position = global_position
-			var balls_node = get_tree().current_scene.find_child("Balls")
-			balls_node.add_child( ball )
+	
 
 
-func count_balls() -> int:
-	var balls_node = get_tree().current_scene.find_child("Balls")
-
-	var count = 0
-	for child in balls_node.get_children():
-		if child is Ball:
-			count += 1
-
-	return count
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
+	print( "I'm free!" )
+	queue_free()
