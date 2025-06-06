@@ -41,8 +41,6 @@ shape = SubResource("WorldBoundaryShape2D_a76vg")
 
 [node name="Bottom Wall" type="StaticBody2D" parent="Walls"]
 position = Vector2(88, 288)
-collision_layer = 0
-collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/Bottom Wall"]
 shape = SubResource("WorldBoundaryShape2D_7771l")

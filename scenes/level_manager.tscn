@@ -1,20 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcii3nqnokldm"]
+[gd_scene load_steps=2 format=3 uid="uid://1vp3h2n1gmyj"]
 
-[ext_resource type="Script" uid="uid://cu8efyg2amsqm" path="res://scripts/level_manager.gd" id="1_06fa7"]
-[ext_resource type="PackedScene" uid="uid://du871lok2v31i" path="res://scenes/black_color_rect.tscn" id="2_5eglo"]
+[ext_resource type="Script" uid="uid://c21hw6adgbevx" path="res://scripts/level_manager.gd" id="1_06fa7"]
 
-[node name="Level Manager" type="Node"]
+[node name="Level Manager" type="Node2D"]
 script = ExtResource("1_06fa7")
-
-[node name="BlackColorRect" parent="." instance=ExtResource("2_5eglo")]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -112.0
-offset_top = -144.0
-offset_right = 112.0
-offset_bottom = 144.0
-grow_horizontal = 2
-grow_vertical = 2
