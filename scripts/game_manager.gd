@@ -9,9 +9,10 @@ class_name GameManager
 @export var lives = 3
 var score = 0
 @onready var level_manager = get_parent().get_node("LevelManager")
+@onready var hud = %UI.get_node("HUD")
 
 func _ready():
-	load_level( "res://scenes/levels/level1.tscn" )
+	load_level( "res://scenes/levels/sandbox_field.tscn" )
 	update_hud()
 
 func load_level( path ):
@@ -30,6 +31,7 @@ func load_level( path ):
 
 func update_hud():
 	print( "Update HUD!" )
+	hud.update_lives( lives )
 
 func free_children( node: Node ):
 	print( "Free the children!" )

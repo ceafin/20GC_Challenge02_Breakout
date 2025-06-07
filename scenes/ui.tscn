@@ -1,9 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://qarxsppjxmcq"]
+[gd_scene load_steps=8 format=3 uid="uid://qarxsppjxmcq"]
 
-[ext_resource type="Texture2D" uid="uid://d337qo6rjy0au" path="res://assets/vaus_counter.png" id="2_x4jx1"]
+[ext_resource type="Script" uid="uid://cupon0woumpub" path="res://scripts/hud.gd" id="1_wm3ai"]
+[ext_resource type="Theme" uid="uid://c0cgn4r0fu5kd" path="res://resources/theme_resource.tres" id="2_gdt2y"]
 [ext_resource type="Texture2D" uid="uid://crnmxpu4d7odn" path="res://assets/arkoball_square_logo.png" id="2_yev5y"]
+[ext_resource type="FontFile" uid="uid://4ddbr6nuc0yi" path="res://fonts/Ac437_PhoenixEGA_8x8.ttf" id="3_wm3ai"]
+[ext_resource type="PackedScene" uid="uid://y12ng51xt3n0" path="res://scenes/vaus_life.tscn" id="5_8dubc"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_gdt2y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8dubc"]
+font = ExtResource("3_wm3ai")
+font_size = 18
+font_color = Color(0, 0.529412, 0.976471, 1)
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
 
 [node name="UI" type="CanvasLayer"]
 
@@ -14,6 +24,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_wm3ai")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HUD"]
 layout_mode = 1
@@ -43,23 +54,49 @@ custom_minimum_size = Vector2(104, 0)
 layout_mode = 2
 theme_override_constants/separation = 0
 
+[node name="HSeparator" type="ColorRect" parent="HUD/HBoxContainer/RightVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
 [node name="Score" type="Label" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_gdt2y")
 text = "Score"
+label_settings = SubResource("LabelSettings_8dubc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ScoreValue" type="Label" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_gdt2y")
 text = "0"
+label_settings = SubResource("LabelSettings_8dubc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="ColorRect" parent="HUD/HBoxContainer/RightVBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 3
 
 [node name="Level" type="Label" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_gdt2y")
 text = "Level"
+label_settings = SubResource("LabelSettings_8dubc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="LevelValue" type="Label" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
+theme = ExtResource("2_gdt2y")
 text = "0"
+label_settings = SubResource("LabelSettings_8dubc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Spacer" type="HSeparator" parent="HUD/HBoxContainer/RightVBoxContainer"]
+[node name="Spacer" type="ColorRect" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 3
@@ -67,14 +104,5 @@ size_flags_vertical = 3
 [node name="LivesBox" type="HBoxContainer" parent="HUD/HBoxContainer/RightVBoxContainer"]
 layout_mode = 2
 
-[node name="VausLife" type="TextureRect" parent="HUD/HBoxContainer/RightVBoxContainer/LivesBox"]
+[node name="VausLife" parent="HUD/HBoxContainer/RightVBoxContainer/LivesBox" instance=ExtResource("5_8dubc")]
 layout_mode = 2
-texture = ExtResource("2_x4jx1")
-
-[node name="VausLife2" type="TextureRect" parent="HUD/HBoxContainer/RightVBoxContainer/LivesBox"]
-layout_mode = 2
-texture = ExtResource("2_x4jx1")
-
-[node name="VausLife3" type="TextureRect" parent="HUD/HBoxContainer/RightVBoxContainer/LivesBox"]
-layout_mode = 2
-texture = ExtResource("2_x4jx1")

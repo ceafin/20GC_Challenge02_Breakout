@@ -1,9 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://db0qoi4v4f5jx"]
+[gd_scene load_steps=5 format=3 uid="uid://db0qoi4v4f5jx"]
 
 [ext_resource type="Texture2D" uid="uid://dnnxuigipdrml" path="res://assets/bg_starfield.png" id="1_ipu61"]
 [ext_resource type="Script" uid="uid://cyvklsx0dccr6" path="res://scripts/game_manager.gd" id="1_s3esy"]
 [ext_resource type="PackedScene" uid="uid://1vp3h2n1gmyj" path="res://scenes/level_manager.tscn" id="2_72e8q"]
-[ext_resource type="PackedScene" uid="uid://ho6uawad1gbb" path="res://scenes/sandbox_field.tscn" id="3_0rdsr"]
 [ext_resource type="PackedScene" uid="uid://qarxsppjxmcq" path="res://scenes/ui.tscn" id="3_d2op2"]
 
 [node name="MainGame" type="Node2D"]
@@ -27,6 +26,5 @@ metadata/_custom_type_script = "uid://cyvklsx0dccr6"
 [node name="LevelManager" parent="." instance=ExtResource("2_72e8q")]
 position = Vector2(104, 0)
 
-[node name="Sandbox Field" parent="LevelManager" instance=ExtResource("3_0rdsr")]
-
 [node name="UI" parent="." instance=ExtResource("3_d2op2")]
+unique_name_in_owner = true
