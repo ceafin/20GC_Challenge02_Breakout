@@ -12,8 +12,9 @@ var score = 0
 @onready var hud = %UI.get_node("HUD")
 
 func _ready():
+	await get_tree().process_frame
 	load_level( "res://scenes/levels/sandbox_field.tscn" )
-	update_hud()
+	GSB.lives_updated.emit( lives )
 
 func load_level( path ):
 	if not is_instance_valid(level_manager):

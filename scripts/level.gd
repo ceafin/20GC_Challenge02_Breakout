@@ -42,7 +42,6 @@ func count_the_balls() -> int:
 	if balls_node == null:
 		return 0
 	
-	print( "Counting balls..." )
 	for sibling in balls_node.get_children():
 		if sibling is Ball:
 			ball_count += 1

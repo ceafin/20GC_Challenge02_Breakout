@@ -2,10 +2,17 @@ extends Control
 class_name HUD
 
 const VAUS_LIFE = preload("res://scenes/vaus_life.tscn")
-
+@onready var score_value = $HBoxContainer/RightVBoxContainer/ScoreValue
+@onready var level_value = $HBoxContainer/RightVBoxContainer/LevelValue
 @onready var lives_box = $HBoxContainer/RightVBoxContainer/LivesBox
 
-func update_lives( new_count: int ) -> void:
+func _ready():
+	GSB.lives_updated.connect( _update_lives )
+
+
+func _update_lives( new_count: int ) -> void:
+	print("Updating lives to:", new_count)
+	
 	# Clear old life icons
 	for child in lives_box.get_children():
 		child.queue_free()
