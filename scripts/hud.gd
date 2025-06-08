@@ -11,7 +11,7 @@ func _ready():
 
 
 func _update_lives( new_count: int ) -> void:
-	print("Updating lives to:", new_count)
+	print("Updating lives to: ", new_count)
 	
 	# Clear old life icons
 	for child in lives_box.get_children():

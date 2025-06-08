@@ -1,5 +1,6 @@
 class_name Brick
 extends StaticBody2D
+
 enum Type {
 	RED,
 	ORANGE,
@@ -53,4 +54,24 @@ func take_damage() -> void:
 	if hit_points <= 0:
 		GSB.powerup_spawn_requested.emit( position )
 		queue_free()
-	
+	match current_type:
+		Type.RED:
+			GSB.brick_broken.emit( 10 )
+		Type.ORANGE:
+			GSB.brick_broken.emit( 20 )
+		Type.YELLOW:
+			GSB.brick_broken.emit( 30 )
+		Type.GREEN:
+			GSB.brick_broken.emit( 40 )
+		Type.CYAN:
+			GSB.brick_broken.emit( 50 )
+		Type.BLUE:
+			GSB.brick_broken.emit( 60 )
+		Type.MAGENTA:
+			GSB.brick_broken.emit( 70 )
+		Type.WHITE:
+			GSB.brick_broken.emit( 80 )
+		Type.SILVER:
+			GSB.brick_broken.emit( 500 )
+		Type.GOLD:
+			GSB.brick_broken.emit( 1000 )

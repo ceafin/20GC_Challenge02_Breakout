@@ -10,6 +10,7 @@ var release_vector : Vector2
 var ball_count : int = 0
 var balls_node : Node2D
 
+
 func _ready() -> void:
 	add_to_group("balls")
 	velocity = Vector2( randf_range(-1,1), randf_range(-1,1) ).normalized()
@@ -34,7 +35,6 @@ func _physics_process(delta: float) -> void:
 				stick_to(collider)
 			else:
 				velocity = bounce_off_paddle(collider.global_position)
-
 		elif collider is Brick:
 			collider.take_damage()
 			velocity = velocity.bounce( collision.get_normal() )
@@ -49,21 +49,22 @@ func bounce_off_paddle(paddle_position: Vector2) -> Vector2:
 	var direction = Vector2(offset, -1).normalized()
 	return direction
 
+
 func stick_to(vaus: Vaus) -> void:
 	is_stuck = true
 	stuck_to_paddle = vaus
 	offset_from_paddle = global_position - vaus.global_position
 	velocity = Vector2.ZERO
 	await get_tree().process_frame
-	
+
 
 func release_from_paddle() -> void:
 	is_stuck = false
 	stuck_to_paddle = null
 	velocity = release_vector
-	
 
 
 func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	print( "I'm free!" )
+	GSB.ball_escaped.emit()
 	queue_free()

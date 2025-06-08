@@ -8,10 +8,12 @@ const BALL = preload("res://scenes/ball.tscn")
 func _ready() -> void:
 	GSB.powerup_spawn_requested.connect( _spawn_powerup )
 	GSB.multi_ball_requested.connect( _release_the_balls )
-	
+	GSB.ball_escaped.connect( _count_the_balls )
 
 func _process(delta: float) -> void:
-	GSB.balls_counted.emit( count_the_balls() )
+	if count_the_balls() <= 0:
+		GSB.all_balls_escaped.emit()
+		return
 	
 
 func _spawn_powerup( target_position: Vector2 ) -> void:
@@ -47,3 +49,9 @@ func count_the_balls() -> int:
 			ball_count += 1
 	
 	return ball_count
+
+
+func _count_the_balls() -> void:
+	if count_the_balls() <= 0:
+		GSB.all_balls_escaped.emit()
+		return
