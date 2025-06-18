@@ -8,6 +8,7 @@ const VAUS_LIFE = preload("res://scenes/vaus_life.tscn")
 
 func _ready():
 	GSB.lives_updated.connect( _update_lives )
+	GSB.brick_broken.connect(Callable(func(value: int) -> void: score_value.text = str( int( score_value.text ) + value ) ))
 
 
 func _update_lives( new_count: int ) -> void:
