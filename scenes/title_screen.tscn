@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://5cd2wcepmx67"]
+
+[ext_resource type="Script" uid="uid://fyxwi0x524gv" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="Texture2D" uid="uid://soh5s8n412aw" path="res://assets/breakout_template.png" id="2_sa3yf"]
+
+[node name="TitleScreen" type="Node2D"]
+script = ExtResource("1_fgkus")
+
+[node name="BreakoutTemplate" type="Sprite2D" parent="."]
+texture = ExtResource("2_sa3yf")
+centered = false

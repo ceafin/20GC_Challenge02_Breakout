@@ -1,30 +1,229 @@
-[gd_scene load_steps=5 format=3 uid="uid://db0qoi4v4f5jx"]
+[gd_scene load_steps=8 format=3 uid="uid://bwprwc8qd88i6"]
 
-[ext_resource type="Texture2D" uid="uid://dnnxuigipdrml" path="res://assets/bg_starfield.png" id="1_ipu61"]
-[ext_resource type="Script" uid="uid://cyvklsx0dccr6" path="res://scripts/game_manager.gd" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://1vp3h2n1gmyj" path="res://scenes/level_manager.tscn" id="2_72e8q"]
-[ext_resource type="PackedScene" uid="uid://qarxsppjxmcq" path="res://scenes/ui.tscn" id="3_d2op2"]
+[ext_resource type="Script" uid="uid://doxdqjy71fhnp" path="res://scripts/main_game.gd" id="1_s3esy"]
+[ext_resource type="PackedScene" uid="uid://34wnqrpp7mx8" path="res://scenes/paddle.tscn" id="3_d2op2"]
+[ext_resource type="Texture2D" uid="uid://c1rytwsy33bnq" path="res://assets/borders.png" id="4_0rdsr"]
+[ext_resource type="PackedScene" uid="uid://bs18g0ekjsvf5" path="res://scenes/brick.tscn" id="4_ygxny"]
+[ext_resource type="PackedScene" uid="uid://b87uyd45ay88e" path="res://scenes/ball.tscn" id="5_ipu61"]
+[ext_resource type="Texture2D" uid="uid://dqgllda8f2s48" path="res://assets/ui_bg.png" id="7_wi4c7"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0rdsr"]
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_s3esy")
 
-[node name="Background" type="CanvasLayer" parent="."]
-layer = -1
+[node name="PlayField" type="Sprite2D" parent="."]
+texture = ExtResource("4_0rdsr")
+centered = false
 
-[node name="TextureRect" type="TextureRect" parent="Background"]
+[node name="StaticTopBody" type="StaticBody2D" parent="."]
+
+[node name="TopBoundary" type="CollisionShape2D" parent="StaticTopBody"]
+position = Vector2(64, 8)
+rotation = 3.14159
+shape = SubResource("WorldBoundaryShape2D_0rdsr")
+
+[node name="StaticBottomBody" type="StaticBody2D" parent="."]
+
+[node name="BottomBoundary" type="CollisionShape2D" parent="StaticBottomBody"]
+position = Vector2(64, 144)
+shape = SubResource("WorldBoundaryShape2D_0rdsr")
+
+[node name="StaticLeftBody" type="StaticBody2D" parent="."]
+
+[node name="LeftBoundary" type="CollisionShape2D" parent="StaticLeftBody"]
+position = Vector2(8, 88)
+rotation = 1.5708
+shape = SubResource("WorldBoundaryShape2D_0rdsr")
+
+[node name="StaticRightBody" type="StaticBody2D" parent="."]
+
+[node name="RightBoudnary" type="CollisionShape2D" parent="StaticRightBody"]
+position = Vector2(112, 88)
+rotation = -1.5708
+shape = SubResource("WorldBoundaryShape2D_0rdsr")
+
+[node name="Bricks" type="Node2D" parent="."]
+
+[node name="Brick" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 24)
+
+[node name="Brick2" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 24)
+
+[node name="Brick3" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 24)
+
+[node name="Brick4" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 24)
+
+[node name="Brick5" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 24)
+
+[node name="Brick6" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 24)
+
+[node name="Brick7" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 24)
+
+[node name="Brick8" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 24)
+
+[node name="Brick9" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 32)
+
+[node name="Brick10" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 32)
+
+[node name="Brick11" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 32)
+
+[node name="Brick12" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 32)
+
+[node name="Brick13" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 32)
+
+[node name="Brick14" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 32)
+
+[node name="Brick15" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 32)
+
+[node name="Brick16" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 32)
+
+[node name="Brick17" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 40)
+
+[node name="Brick18" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 40)
+
+[node name="Brick19" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 40)
+
+[node name="Brick20" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 40)
+
+[node name="Brick21" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 40)
+
+[node name="Brick22" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 40)
+
+[node name="Brick23" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 40)
+
+[node name="Brick24" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 40)
+
+[node name="Brick25" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 48)
+
+[node name="Brick26" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 48)
+
+[node name="Brick27" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 48)
+
+[node name="Brick28" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 48)
+
+[node name="Brick29" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 48)
+
+[node name="Brick30" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 48)
+
+[node name="Brick31" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 48)
+
+[node name="Brick32" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 48)
+
+[node name="Brick33" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 56)
+
+[node name="Brick34" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 56)
+
+[node name="Brick35" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 56)
+
+[node name="Brick36" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 56)
+
+[node name="Brick37" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 56)
+
+[node name="Brick38" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 56)
+
+[node name="Brick39" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 56)
+
+[node name="Brick40" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 56)
+
+[node name="Brick41" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(8, 64)
+
+[node name="Brick42" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(21, 64)
+
+[node name="Brick43" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(34, 64)
+
+[node name="Brick44" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(47, 64)
+
+[node name="Brick45" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(60, 64)
+
+[node name="Brick46" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(73, 64)
+
+[node name="Brick47" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(86, 64)
+
+[node name="Brick48" parent="Bricks" instance=ExtResource("4_ygxny")]
+position = Vector2(99, 64)
+
+[node name="Paddle" parent="." instance=ExtResource("3_d2op2")]
+position = Vector2(60, 130)
+
+[node name="Ball" parent="." instance=ExtResource("5_ipu61")]
+position = Vector2(60, 88)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="UI"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ipu61")
-stretch_mode = 1
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
-[node name="GameManager" type="Node" parent="."]
-script = ExtResource("1_s3esy")
-metadata/_custom_type_script = "uid://cyvklsx0dccr6"
+[node name="TextureRect" type="TextureRect" parent="UI/Control"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("7_wi4c7")
 
-[node name="LevelManager" parent="." instance=ExtResource("2_72e8q")]
-position = Vector2(104, 0)
-
-[node name="UI" parent="." instance=ExtResource("3_d2op2")]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2

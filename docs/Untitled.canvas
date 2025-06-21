@@ -1,9 +1,0 @@
-{
-	"nodes":[
-		{"id":"aa293e2ca605efcf","x":-125,"y":-30,"width":250,"height":60,"type":"text","text":"Paddle"},
-		{"id":"9506380ca2ce4321","x":-560,"y":60,"width":120,"height":60,"color":"5","type":"text","text":"Ball"}
-	],
-	"edges":[
-		{"id":"f527925a24e77480","fromNode":"9506380ca2ce4321","fromSide":"right","toNode":"aa293e2ca605efcf","toSide":"left","label":"ball_left_play"}
-	]
-}

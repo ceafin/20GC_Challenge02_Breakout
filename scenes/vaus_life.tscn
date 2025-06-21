@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://y12ng51xt3n0"]
-
-[ext_resource type="Texture2D" uid="uid://d337qo6rjy0au" path="res://assets/vaus_counter.png" id="1_qp3ex"]
-
-[node name="VausLife" type="TextureRect"]
-texture = ExtResource("1_qp3ex")
