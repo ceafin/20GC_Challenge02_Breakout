@@ -1,11 +1,77 @@
-[gd_scene load_steps=3 format=3 uid="uid://5cd2wcepmx67"]
+[gd_scene load_steps=6 format=3 uid="uid://5cd2wcepmx67"]
 
 [ext_resource type="Script" uid="uid://fyxwi0x524gv" path="res://scripts/title_screen.gd" id="1_fgkus"]
-[ext_resource type="Texture2D" uid="uid://soh5s8n412aw" path="res://assets/breakout_template.png" id="2_sa3yf"]
+[ext_resource type="Texture2D" uid="uid://ca8tb6aarbieb" path="res://assets/title_screen.png" id="2_sa3yf"]
+[ext_resource type="FontFile" uid="uid://4ddbr6nuc0yi" path="res://fonts/Ac437_PhoenixEGA_8x8.ttf" id="3_s4lrb"]
 
-[node name="TitleScreen" type="Node2D"]
+[sub_resource type="Theme" id="Theme_mgrm8"]
+RichTextLabel/colors/default_color = Color(0.607843, 0.737255, 0.0588235, 1)
+RichTextLabel/colors/font_outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+RichTextLabel/colors/font_shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+RichTextLabel/constants/outline_size = 6
+RichTextLabel/constants/shadow_offset_x = 2
+RichTextLabel/constants/shadow_offset_y = 2
+RichTextLabel/constants/shadow_outline_size = 2
+RichTextLabel/font_sizes/normal_font_size = 20
+RichTextLabel/fonts/normal_font = ExtResource("3_s4lrb")
+
+[sub_resource type="LabelSettings" id="LabelSettings_s4lrb"]
+font = ExtResource("3_s4lrb")
+font_size = 12
+font_color = Color(0.607843, 0.737255, 0.0588235, 1)
+outline_size = 6
+outline_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+shadow_size = 6
+shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[node name="TitleScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource("1_fgkus")
 
-[node name="BreakoutTemplate" type="Sprite2D" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = ExtResource("2_sa3yf")
-centered = false
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -0.0994838
+theme = SubResource("Theme_mgrm8")
+bbcode_enabled = true
+text = "[wave]BREAKOUT![/wave]"
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+drag_and_drop_selection_enabled = false
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -23.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Press
+Spacebar
+to Start"
+label_settings = SubResource("LabelSettings_s4lrb")
+horizontal_alignment = 2
+vertical_alignment = 2

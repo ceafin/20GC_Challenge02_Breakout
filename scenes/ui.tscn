@@ -1,0 +1,118 @@
+[gd_scene load_steps=5 format=3 uid="uid://dm4pytlrs4ey3"]
+
+[ext_resource type="Texture2D" uid="uid://dqgllda8f2s48" path="res://assets/ui_bg.png" id="1_x4jx1"]
+[ext_resource type="Script" uid="uid://dk58tqrh6fpc0" path="res://scripts/ui.gd" id="1_yev5y"]
+[ext_resource type="FontFile" uid="uid://4ddbr6nuc0yi" path="res://fonts/Ac437_PhoenixEGA_8x8.ttf" id="2_yev5y"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_2l77h"]
+font = ExtResource("2_yev5y")
+font_size = 6
+font_color = Color(0.0588235, 0.219608, 0.0588235, 1)
+outline_size = 4
+outline_color = Color(0.607843, 0.737255, 0.0588235, 1)
+shadow_size = 4
+shadow_color = Color(0.188235, 0.384314, 0.188235, 1)
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_yev5y")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("1_x4jx1")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="HSeparator" type="HSeparator" parent="Control/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 9)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ScoreLabel" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScoreText" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "000000"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator2" type="HSeparator" parent="Control/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LevelLabel" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Level"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelText" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator3" type="HSeparator" parent="Control/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="LivesLabel" type="Label" parent="Control/VBoxContainer"]
+layout_mode = 2
+text = "Lives"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LivesText" type="Label" parent="Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "0"
+label_settings = SubResource("LabelSettings_2l77h")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator4" type="HSeparator" parent="Control/VBoxContainer"]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(0, 6)
+layout_mode = 2
+size_flags_vertical = 3

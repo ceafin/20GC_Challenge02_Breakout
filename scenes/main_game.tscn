@@ -1,13 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://bwprwc8qd88i6"]
+[gd_scene load_steps=7 format=3 uid="uid://bwprwc8qd88i6"]
 
 [ext_resource type="Script" uid="uid://doxdqjy71fhnp" path="res://scripts/main_game.gd" id="1_s3esy"]
-[ext_resource type="PackedScene" uid="uid://34wnqrpp7mx8" path="res://scenes/paddle.tscn" id="3_d2op2"]
 [ext_resource type="Texture2D" uid="uid://c1rytwsy33bnq" path="res://assets/borders.png" id="4_0rdsr"]
-[ext_resource type="PackedScene" uid="uid://bs18g0ekjsvf5" path="res://scenes/brick.tscn" id="4_ygxny"]
-[ext_resource type="PackedScene" uid="uid://b87uyd45ay88e" path="res://scenes/ball.tscn" id="5_ipu61"]
-[ext_resource type="Texture2D" uid="uid://dqgllda8f2s48" path="res://assets/ui_bg.png" id="7_wi4c7"]
+[ext_resource type="PackedScene" uid="uid://dm4pytlrs4ey3" path="res://scenes/ui.tscn" id="6_ygxny"]
+[ext_resource type="FontFile" uid="uid://4ddbr6nuc0yi" path="res://fonts/Ac437_PhoenixEGA_8x8.ttf" id="7_70vka"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_0rdsr"]
+
+[sub_resource type="Theme" id="Theme_0rdsr"]
+RichTextLabel/colors/default_color = Color(0.607843, 0.737255, 0.0588235, 1)
+RichTextLabel/colors/font_outline_color = Color(0.188235, 0.384314, 0.188235, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/fonts/normal_font = ExtResource("7_70vka")
 
 [node name="MainGame" type="Node2D"]
 script = ExtResource("1_s3esy")
@@ -24,6 +28,8 @@ rotation = 3.14159
 shape = SubResource("WorldBoundaryShape2D_0rdsr")
 
 [node name="StaticBottomBody" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
 
 [node name="BottomBoundary" type="CollisionShape2D" parent="StaticBottomBody"]
 position = Vector2(64, 144)
@@ -45,185 +51,117 @@ shape = SubResource("WorldBoundaryShape2D_0rdsr")
 
 [node name="Bricks" type="Node2D" parent="."]
 
-[node name="Brick" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 24)
+[node name="UI" parent="." instance=ExtResource("6_ygxny")]
 
-[node name="Brick2" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 24)
+[node name="YouWin" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Brick3" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 24)
-
-[node name="Brick4" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 24)
-
-[node name="Brick5" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 24)
-
-[node name="Brick6" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 24)
-
-[node name="Brick7" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 24)
-
-[node name="Brick8" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 24)
-
-[node name="Brick9" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 32)
-
-[node name="Brick10" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 32)
-
-[node name="Brick11" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 32)
-
-[node name="Brick12" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 32)
-
-[node name="Brick13" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 32)
-
-[node name="Brick14" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 32)
-
-[node name="Brick15" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 32)
-
-[node name="Brick16" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 32)
-
-[node name="Brick17" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 40)
-
-[node name="Brick18" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 40)
-
-[node name="Brick19" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 40)
-
-[node name="Brick20" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 40)
-
-[node name="Brick21" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 40)
-
-[node name="Brick22" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 40)
-
-[node name="Brick23" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 40)
-
-[node name="Brick24" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 40)
-
-[node name="Brick25" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 48)
-
-[node name="Brick26" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 48)
-
-[node name="Brick27" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 48)
-
-[node name="Brick28" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 48)
-
-[node name="Brick29" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 48)
-
-[node name="Brick30" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 48)
-
-[node name="Brick31" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 48)
-
-[node name="Brick32" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 48)
-
-[node name="Brick33" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 56)
-
-[node name="Brick34" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 56)
-
-[node name="Brick35" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 56)
-
-[node name="Brick36" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 56)
-
-[node name="Brick37" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 56)
-
-[node name="Brick38" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 56)
-
-[node name="Brick39" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 56)
-
-[node name="Brick40" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 56)
-
-[node name="Brick41" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(8, 64)
-
-[node name="Brick42" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(21, 64)
-
-[node name="Brick43" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(34, 64)
-
-[node name="Brick44" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(47, 64)
-
-[node name="Brick45" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(60, 64)
-
-[node name="Brick46" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(73, 64)
-
-[node name="Brick47" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(86, 64)
-
-[node name="Brick48" parent="Bricks" instance=ExtResource("4_ygxny")]
-position = Vector2(99, 64)
-
-[node name="Paddle" parent="." instance=ExtResource("3_d2op2")]
-position = Vector2(60, 130)
-
-[node name="Ball" parent="." instance=ExtResource("5_ipu61")]
-position = Vector2(60, 88)
-
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="Control" type="Control" parent="UI"]
+[node name="Control" type="Control" parent="YouWin"]
+custom_minimum_size = Vector2(120, 144)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_right = 120.0
+offset_bottom = 72.0
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TextureRect" type="TextureRect" parent="UI/Control"]
+[node name="Label" type="RichTextLabel" parent="YouWin/Control"]
 layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
+anchors_preset = 14
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -40.0
-grow_horizontal = 0
+anchor_bottom = 0.5
+offset_top = -23.0
+offset_bottom = 23.0
+grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("7_wi4c7")
+size_flags_vertical = 6
+theme = SubResource("Theme_0rdsr")
+bbcode_enabled = true
+text = "[wave]YOU   WIN![/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+drag_and_drop_selection_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control"]
-custom_minimum_size = Vector2(40, 0)
-layout_mode = 1
-anchors_preset = 11
-anchor_left = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
+[node name="YouLose" type="CanvasLayer" parent="."]
+visible = false
+
+[node name="Control" type="Control" parent="YouLose"]
+custom_minimum_size = Vector2(120, 144)
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_right = 120.0
+offset_bottom = 72.0
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="RichTextLabel" parent="YouLose/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -22.0
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_0rdsr")
+bbcode_enabled = true
+text = "[wave]YOU  LOSE![/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+drag_and_drop_selection_enabled = false
+
+[node name="GetReady" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="GetReady"]
+custom_minimum_size = Vector2(120, 144)
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -72.0
+offset_right = 120.0
+offset_bottom = 72.0
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Label" type="RichTextLabel" parent="GetReady/Control"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -29.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+theme = SubResource("Theme_0rdsr")
+bbcode_enabled = true
+text = "[wave]Get Ready![/wave]"
+fit_content = true
+scroll_active = false
+horizontal_alignment = 1
+vertical_alignment = 1
+drag_and_drop_selection_enabled = false
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
